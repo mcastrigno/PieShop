@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BethsPieShop.Models;
+
 
 namespace BethsPieShop
 {
@@ -24,6 +26,9 @@ namespace BethsPieShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddScoped<IPieRepository, MockPieRepository>();
+            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+
             services.AddControllersWithViews();
         }
 

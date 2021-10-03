@@ -47,6 +47,7 @@ namespace BethsPieShop
             }
 
             app.UseHttpsRedirection();
+            // useStaticFiles defaults to serving files from wwwroot
             app.UseStaticFiles();
 
             app.UseRouting();

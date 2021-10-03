@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethsPieShop.Models;
-//using BethsPieShop.ViewModels;
+using BethsPieShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,15 +22,16 @@ namespace BethsPieShop.Controllers
         }
          public ViewResult List()
         {
-            return View(_pieRepository.AllPies);
+            PiesListViewModel piesListViewModel = new PiesListViewModel();
+            piesListViewModel.Pies = _pieRepository.AllPies;
+            piesListViewModel.CurrentCategory = "Cheese Cakes";
+            return View(piesListViewModel);
         }
         // GET: /<controller>/
         //public IActionResult List()
         //{
-            //ViewBag.CurrentCategory = "Cheese cakes";
 
             //return View(_pieRepository.AllPies);
-        //    PiesListViewModel piesListViewModel = new PiesListViewModel();
         //    piesListViewModel.Pies = _pieRepository.AllPies;
 
         //    piesListViewModel.CurrentCategory = "Cheese cakes";

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<BethsPieShop.Models.Pie>
+﻿@model BethsPieShop.ViewModels.PiesListViewModel
     
 
 
-<h1>Temp Header</h1>
+<h1>@Model.CurrentCategory</h1>
 
-@foreach (var pie in Model)
+@foreach (var pie in Model.Pies)
 {
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">

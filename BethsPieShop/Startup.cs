@@ -9,25 +9,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethsPieShop.Models;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace BethsPieShop
 {
     public class Startup
     {
+
+
+        public IConfiguration Configuration { get; } //this  allows configuration to be read from appsettings.json through dependency injection
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the  DI(DI is my words) container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
-            services.AddScoped<IPieRepository, MockPieRepository>();
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IPieRepository, PieRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddControllersWithViews();
         }

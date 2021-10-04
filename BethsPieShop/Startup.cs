@@ -68,7 +68,7 @@ namespace BethsPieShop
                         // this type of routing is referred to as "convention-based" typically used for web pages and attribute routing is typically used for APIs
                         // the question mark makes the value optional - add constraints id:int adds int requirement
                         pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                //endpoints.MapRazorPages();
             });
         }
     }

@@ -65,6 +65,8 @@ namespace BethsPieShop
                         name: "default",
                         // Matthew: in the pattern below the controller is the name of the cs file sans the word controller in the Controllers folder (this is the default folder name)
                         // action is the name of the .cshtml file in the folder of the same name as the controller. ie pie/list
+                        // this type of routing is referred to as "convention-based" typically used for web pages and attribute routing is typically used for APIs
+                        // the question mark makes the value optional - add constraints id:int adds int requirement
                         pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });

@@ -33,6 +33,9 @@ namespace BethsPieShop
             services.AddRazorPages();
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -54,11 +57,9 @@ namespace BethsPieShop
             app.UseHttpsRedirection();
             // useStaticFiles defaults to serving files from wwwroot
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                     endpoints.MapControllerRoute(
